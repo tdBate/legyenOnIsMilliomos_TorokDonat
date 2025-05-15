@@ -3,29 +3,15 @@ using System.IO;
 
 namespace legyenOnIsMilliomos
 {
-    internal class SorKerdes
+    internal class SorKerdes 
     {
-        private Random rnd = new Random();
+        protected Random rnd = new Random();
 
-        private string kerdesSzoveg;
-        private string[] valaszok = new string[4];
-        private string helyesValasz;
-        private string kategoria;
+        protected string kerdesSzoveg;
+        protected string[] valaszok = new string[4];
+        protected string helyesValasz;
+        protected string kategoria;
 
-        public void SorKerdesHuzas()
-        {
-            string path = @".\sorkerdes.txt";
-            string[] lines = File.ReadAllLines(path);
-            string[] adatok = lines[rnd.Next(0, lines.Length)].Split(';');
-
-            kerdesSzoveg = adatok[0];
-            valaszok[0] = adatok[1];
-            valaszok[1] = adatok[2];
-            valaszok[2] = adatok[3]; 
-            valaszok[3] = adatok[4];
-            helyesValasz = adatok[5];
-            kategoria = adatok[6];
-        }
 
         public void SorKerdesKiiras()
         {
@@ -41,5 +27,19 @@ namespace legyenOnIsMilliomos
         {
             return helyesValasz.Equals(valasz.ToUpper());
         }
+        public virtual void SorKerdesHuzas()
+        {
+            string path = @".\sorkerdes.txt";
+            string[] lines = File.ReadAllLines(path);
+            string[] adatok = lines[rnd.Next(0, lines.Length)].Split(';');
+
+            kerdesSzoveg = adatok[0];
+            valaszok[0] = adatok[1];
+            valaszok[1] = adatok[2];
+            valaszok[2] = adatok[3]; 
+            valaszok[3] = adatok[4];
+            helyesValasz = adatok[5];
+            kategoria = adatok[6];
+        }      
     }
 }
