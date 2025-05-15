@@ -23,5 +23,10 @@ namespace legyenOnIsMilliomos
             helyesValasz = adatok[6];
             kategoria = adatok[7];
         }
+
+        public override bool ValaszCheck(string valasz)
+        {
+            return false;
+        }
     }
 }

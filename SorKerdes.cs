@@ -23,7 +23,7 @@ namespace legyenOnIsMilliomos
             Console.WriteLine("\tD: " + valaszok[3]);
         }
 
-        public bool ValaszCheck(string valasz)
+        public virtual bool ValaszCheck(string valasz)
         {
             return helyesValasz.Equals(valasz.ToUpper());
         }
@@ -31,7 +31,7 @@ namespace legyenOnIsMilliomos
         {
             string path = @".\sorkerdes.txt";
             string[] lines = File.ReadAllLines(path);
-            string[] adatok = lines[rnd.Next(0, lines.Length)].Split(';');
+            string[] adatok = lines[rnd.Next(0, lines.Length/6)].Split(';');
 
             kerdesSzoveg = adatok[0];
             valaszok[0] = adatok[1];
