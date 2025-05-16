@@ -8,6 +8,8 @@ namespace legyenOnIsMilliomos
 {
     internal class Jatek
     {
+        private int penzosszeg = 0;
+
         static bool SorKerdesJatszas()
         {
             SorKerdes sk = new SorKerdes();
@@ -28,11 +30,18 @@ namespace legyenOnIsMilliomos
                 while (marade)
                 {
                     k.SorKerdesHuzas(lepes);
+                    Console.WriteLine("Jelenlegi egyenleg: "+penzosszeg+" Ft");
                     k.SorKerdesKiiras();
 
                     if (k.ValaszCheck(Console.ReadLine()))
                     {
                         Console.WriteLine("Helyes válasz!");
+                        penzosszeg *= 2;
+                        if (penzosszeg == 0)
+                        {
+                            penzosszeg = 10000;
+                        }
+
                     }
                     else
                     {
@@ -44,6 +53,7 @@ namespace legyenOnIsMilliomos
 
                     if (k.VegIndex-k.KezdoIndex == lepes)
                     {
+                        Console.WriteLine("Nyert "+penzosszeg+" Forintot!!");
                         marade = false;
                     }
 
@@ -54,6 +64,7 @@ namespace legyenOnIsMilliomos
             {
                 Console.WriteLine("Nem nyertél");
             }
+            
         }
     }
 }
