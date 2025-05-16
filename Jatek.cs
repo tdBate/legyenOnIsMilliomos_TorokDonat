@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,12 +17,16 @@ namespace legyenOnIsMilliomos
             SorKerdes sk = new SorKerdes();
             sk.SorKerdesHuzas();
             sk.SorKerdesKiiras();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             return sk.ValaszCheck(Console.ReadLine());
+            
         }
 
 
         public void JatekIndit()
         {
+            int penznyeremeny = 10000;
+
             Console.WriteLine("Üdvözlöm a Legyen Ön is milliomos játékban!");
             Thread.Sleep(1000);
             Console.WriteLine("Itt az idő megválaszolni a sorkérdést!");
@@ -29,6 +34,7 @@ namespace legyenOnIsMilliomos
 
             if (SorKerdesJatszas())
             {
+                Console.ResetColor();
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("A válasza helyes volt!");
@@ -50,6 +56,7 @@ namespace legyenOnIsMilliomos
                     
                     k.SorKerdesHuzas(lepes);
                     Console.WriteLine("Jelenlegi egyenleg: "+penzosszeg+" Ft");
+                    Console.WriteLine("Ez a kérdés "+penznyeremeny+" Ft-ot ér");
                     k.SorKerdesKiiras();
 
                     Console.ForegroundColor = ConsoleColor.Cyan;
@@ -61,10 +68,14 @@ namespace legyenOnIsMilliomos
                         Console.ResetColor();
                         Thread.Sleep(1000);
                         Console.Clear();
-                        penzosszeg *= 2;
+                        
                         if (penzosszeg == 0)
                         {
-                            penzosszeg = 10000;
+                            penzosszeg = penznyeremeny;
+                        }
+                        else {
+                            penzosszeg += penznyeremeny;
+                            penznyeremeny = penzosszeg;
                         }
 
                     }

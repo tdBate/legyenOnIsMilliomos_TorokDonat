@@ -16,13 +16,15 @@ namespace legyenOnIsMilliomos
 
         public void SorKerdesKiiras()
         {
-            Console.WriteLine("TÖRÖLNI!!!!!! - "+helyesValasz);
+            Console.WriteLine("TÖRÖLNI!!!!!! - "+helyesValasz); //majd a kész játéknál
             Console.WriteLine("Kategória: " + kategoria);
             Console.WriteLine(kerdesSzoveg);
-            Console.WriteLine("\tA: " + valaszok[0]);
-            Console.WriteLine("\tB: " + valaszok[1]);
-            Console.WriteLine("\tC: " + valaszok[2]);
-            Console.WriteLine("\tD: " + valaszok[3]);
+
+            char[] betuk = { 'A', 'B', 'C', 'D' };
+            for (int i = 0; i < valaszok.Length; i++)
+            {
+                Console.WriteLine("\t" + betuk[i]+": " + valaszok[i]);
+            }
         }
 
         public virtual bool ValaszCheck(string valasz)
