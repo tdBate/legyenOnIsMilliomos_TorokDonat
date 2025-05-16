@@ -11,13 +11,13 @@ namespace legyenOnIsMilliomos
     {
         static void Main(string[] args)
         {
-            SorKerdes sorKerdes1 = new SorKerdes();
+            /*SorKerdes sorKerdes1 = new SorKerdes();
             sorKerdes1.SorKerdesHuzas();
             sorKerdes1.SorKerdesKiiras();
             Console.Write("Váalasz: ");
             string valasz = Console.ReadLine();
             Console.WriteLine(sorKerdes1.ValaszCheck(valasz));
-            Console.ReadKey();
+            Console.ReadKey();*/
 
             Kerdes kerdes1 = new Kerdes();
             kerdes1.SorKerdesHuzas();

@@ -4,16 +4,41 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace legyenOnIsMilliomos
 {
     internal class Kerdes : SorKerdes
     {
+        private int kezdoIndex = -1;
+        private int vegIndex;
+
         public override void SorKerdesHuzas()
         {
-            string path = @".\kerdes.txt";
-            string[] lines = File.ReadAllLines(path);
-            string[] adatok = lines[rnd.Next(0, lines.Length)].Split(';');
+            
+
+        string path = @".\kerdes.txt";
+
+        Kerdesek k1 = new Kerdesek();
+        k1.KerdesBeolvas(path);
+
+            List<string[]> lines = k1.Feladatok;
+
+            for (int i = rnd.Next(0,lines.Count-4); i<lines.Count; i++)
+            {
+                if (lines[i][0].Equals("1") && kezdoIndex == -1)
+                {
+                    kezdoIndex = i;
+                }
+                else if (lines[i][0].Equals("1"))
+                {
+                    vegIndex = i-1;
+                }
+            }
+
+            Console.WriteLine(lines[kezdoIndex][0]);
+            Console.WriteLine(lines[vegIndex][0]);
+            string[] adatok = lines[kezdoIndex];
 
             kerdesSzoveg = adatok[1];
             valaszok[0] = adatok[2];
@@ -22,11 +47,8 @@ namespace legyenOnIsMilliomos
             valaszok[3] = adatok[5];
             helyesValasz = adatok[6];
             kategoria = adatok[7];
-        }
+        
 
-        public override bool ValaszCheck(string valasz)
-        {
-            return false;
         }
-    }
+   }
 }
