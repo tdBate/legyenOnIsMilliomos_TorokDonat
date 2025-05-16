@@ -41,8 +41,6 @@ namespace legyenOnIsMilliomos
 
             string[] adatok = lines[rnd.Next(0, lines.Count/6)];
 
-           
-
             kerdesSzoveg = adatok[0];
             valaszok[0] = adatok[1];
             valaszok[1] = adatok[2];

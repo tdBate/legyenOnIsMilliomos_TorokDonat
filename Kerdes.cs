@@ -17,7 +17,6 @@ namespace legyenOnIsMilliomos
         public int VegIndex { get => vegIndex; set => vegIndex = value; }
 
 
-
         public void SorKerdesHuzas(int iteration = 0)
         {
             
@@ -55,8 +54,6 @@ namespace legyenOnIsMilliomos
             valaszok[3] = adatok[5];
             helyesValasz = adatok[6];
             kategoria = adatok[7];
-        
-
         }
    }
 }
