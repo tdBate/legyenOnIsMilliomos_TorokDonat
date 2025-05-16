@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jatek.cs" />
     <Compile Include="Kerdes.cs" />
     <Compile Include="Kerdesek.cs" />
     <Compile Include="Program.cs" />

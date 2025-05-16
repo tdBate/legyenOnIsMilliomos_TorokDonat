@@ -16,6 +16,7 @@ namespace legyenOnIsMilliomos
 
         public void SorKerdesKiiras()
         {
+            Console.WriteLine("TÖRÖLNI!!!!!! - "+helyesValasz);
             Console.WriteLine("Kategória: " + kategoria);
             Console.WriteLine(kerdesSzoveg);
             Console.WriteLine("\tA: " + valaszok[0]);
@@ -38,7 +39,7 @@ namespace legyenOnIsMilliomos
 
             string[] adatok = lines[rnd.Next(0, lines.Count/6)];
 
-            Console.WriteLine(adatok[3].GetType());
+           
 
             kerdesSzoveg = adatok[0];
             valaszok[0] = adatok[1];

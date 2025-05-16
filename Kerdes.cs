@@ -13,7 +13,12 @@ namespace legyenOnIsMilliomos
         private int kezdoIndex = -1;
         private int vegIndex;
 
-        public override void SorKerdesHuzas()
+        public int KezdoIndex { get => kezdoIndex; set => kezdoIndex = value; }
+        public int VegIndex { get => vegIndex; set => vegIndex = value; }
+
+
+
+        public void SorKerdesHuzas(int iteration = 0)
         {
             
 
@@ -24,21 +29,24 @@ namespace legyenOnIsMilliomos
 
             List<string[]> lines = k1.Feladatok;
 
-            for (int i = rnd.Next(0,lines.Count-4); i<lines.Count; i++)
+            if (kezdoIndex == -1)
             {
-                if (lines[i][0].Equals("1") && kezdoIndex == -1)
+                for (int i = rnd.Next(0, lines.Count - 4); i < lines.Count; i++)
                 {
-                    kezdoIndex = i;
-                }
-                else if (lines[i][0].Equals("1"))
-                {
-                    vegIndex = i-1;
+                    if (lines[i][0].Equals("1") && kezdoIndex == -1)
+                    {
+                        kezdoIndex = i;
+                    }
+                    else if (lines[i][0].Equals("1"))
+                    {
+                        vegIndex = i - 1;
+                    }
                 }
             }
 
-            Console.WriteLine(lines[kezdoIndex][0]);
-            Console.WriteLine(lines[vegIndex][0]);
-            string[] adatok = lines[kezdoIndex];
+            //Console.WriteLine(lines[kezdoIndex][0]);
+            //Console.WriteLine(lines[vegIndex][0]);
+            string[] adatok = lines[kezdoIndex+iteration];
 
             kerdesSzoveg = adatok[1];
             valaszok[0] = adatok[2];

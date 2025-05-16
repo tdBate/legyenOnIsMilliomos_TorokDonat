@@ -17,7 +17,7 @@ namespace legyenOnIsMilliomos
             Console.Write("Váalasz: ");
             string valasz = Console.ReadLine();
             Console.WriteLine(sorKerdes1.ValaszCheck(valasz));
-            Console.ReadKey();*/
+            Console.ReadKey();
 
             Kerdes kerdes1 = new Kerdes();
             kerdes1.SorKerdesHuzas();
@@ -25,7 +25,10 @@ namespace legyenOnIsMilliomos
             Console.Write("Váalasz: ");
             string valasz2 = Console.ReadLine();
             Console.WriteLine(kerdes1.ValaszCheck(valasz2));
-            Console.ReadKey();
+            Console.ReadKey();*/
+
+            Jatek j = new Jatek();
+            j.JatekIndit();
         }
     }
 }
