@@ -29,6 +29,7 @@ namespace legyenOnIsMilliomos
 
             Jatek j = new Jatek();
             j.JatekIndit();
+            Console.ReadKey();
         }
     }
 }

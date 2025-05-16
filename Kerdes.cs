@@ -11,7 +11,7 @@ namespace legyenOnIsMilliomos
     internal class Kerdes : SorKerdes
     {
         private int kezdoIndex = -1;
-        private int vegIndex;
+        private int vegIndex = -1;
 
         public int KezdoIndex { get => kezdoIndex; set => kezdoIndex = value; }
         public int VegIndex { get => vegIndex; set => vegIndex = value; }
@@ -37,7 +37,7 @@ namespace legyenOnIsMilliomos
                     {
                         kezdoIndex = i;
                     }
-                    else if (lines[i][0].Equals("1"))
+                    else if (lines[i][0].Equals("1") && vegIndex == -1)
                     {
                         vegIndex = i - 1;
                     }

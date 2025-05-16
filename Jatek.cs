@@ -21,7 +21,34 @@ namespace legyenOnIsMilliomos
         {
             if (SorKerdesJatszas())
             {
-                
+                Kerdes k = new Kerdes();
+
+                int lepes = 0;
+                bool marade = true;
+                while (marade)
+                {
+                    k.SorKerdesHuzas(lepes);
+                    k.SorKerdesKiiras();
+
+                    if (k.ValaszCheck(Console.ReadLine()))
+                    {
+                        Console.WriteLine("Helyes válasz!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Helytelen válasz!");
+                        marade = false;
+                    }
+
+                    //Console.WriteLine(k.VegIndex +" "+ k.KezdoIndex);
+
+                    if (k.VegIndex-k.KezdoIndex == lepes)
+                    {
+                        marade = false;
+                    }
+
+                    lepes++;
+                }
             }
             else
             {
