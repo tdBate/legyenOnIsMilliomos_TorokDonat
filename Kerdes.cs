@@ -21,7 +21,7 @@ namespace legyenOnIsMilliomos
         {
             
 
-        string path = @".\kerdes.txt";
+        string path = @"../../kerdes.txt";
 
         Kerdesek k1 = new Kerdesek();
         k1.KerdesBeolvas(path);
@@ -55,5 +55,6 @@ namespace legyenOnIsMilliomos
             helyesValasz = adatok[6];
             kategoria = adatok[7];
         }
+
    }
 }

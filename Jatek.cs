@@ -12,6 +12,7 @@ namespace legyenOnIsMilliomos
     {
         private int penzosszeg = 0;
 
+        
         static bool SorKerdesJatszas()
         {
             SorKerdes sk = new SorKerdes();
@@ -57,7 +58,7 @@ namespace legyenOnIsMilliomos
                     k.SorKerdesHuzas(lepes);
                     Console.WriteLine("Jelenlegi egyenleg: "+penzosszeg+" Ft");
                     Console.WriteLine("Ez a kérdés "+penznyeremeny+" Ft-ot ér");
-                    k.SorKerdesKiiras();
+                    k.SorKerdesKiiras(1);
 
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     if (k.ValaszCheck(Console.ReadLine()))

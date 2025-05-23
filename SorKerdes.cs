@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace legyenOnIsMilliomos
 {
@@ -14,17 +15,41 @@ namespace legyenOnIsMilliomos
         protected string kategoria;
 
 
-        public void SorKerdesKiiras()
+        public void SorKerdesKiiras(int segitsegKod = 0) //1: közönség
         {
             Console.WriteLine("TÖRÖLNI!!!!!! - "+helyesValasz); //majd a kész játéknál
             Console.WriteLine("Kategória: " + kategoria);
             Console.WriteLine(kerdesSzoveg);
 
             char[] betuk = { 'A', 'B', 'C', 'D' };
-            for (int i = 0; i < valaszok.Length; i++)
+
+            if (segitsegKod == 0)
             {
-                Console.WriteLine("\t" + betuk[i]+": " + valaszok[i]);
+                for (int i = 0; i < valaszok.Length; i++)
+                {
+                    Console.WriteLine("\t" + betuk[i] + ": " + valaszok[i]);
+                }
             }
+            else if (segitsegKod == 1)
+            {
+				int[] szazalekok = new int[valaszok.Length];
+				int osszertek = 0;
+				for (int i = 0; i < valaszok.Length - 1; i++)
+				{
+					int osszeg = rnd.Next(1, 100 - osszertek);
+					osszertek += osszeg;
+					szazalekok[i] = osszeg;
+				}
+				szazalekok[szazalekok.Length - 1] = 100 - osszertek;
+				
+                int maxSzam = szazalekok.Max();
+				(szazalekok[Array.IndexOf(szazalekok, maxSzam)], szazalekok[Array.IndexOf(betuk, Convert.ToChar(helyesValasz))]) = (szazalekok[Array.IndexOf(betuk, Convert.ToChar(helyesValasz))], szazalekok[Array.IndexOf(szazalekok, maxSzam)]);
+
+				for (int i = 0; i < valaszok.Length; i++)
+				{
+					Console.WriteLine("\t" + betuk[i] + ": " + valaszok[i]+" szavazás eredmény: " + szazalekok[i]+"%");
+				}
+			}
         }
 
         public virtual bool ValaszCheck(string valasz)
@@ -34,7 +59,7 @@ namespace legyenOnIsMilliomos
         public virtual void SorKerdesHuzas()
         {
             Kerdesek k2 = new Kerdesek();
-            string path = @".\sorkerdes.txt";
+            string path = @"../../sorkerdes.txt";
 
             k2.KerdesBeolvas(path);
             List<string[]> lines = k2.Feladatok;
