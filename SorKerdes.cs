@@ -15,7 +15,7 @@ namespace legyenOnIsMilliomos
         protected string kategoria;
 
 
-        public void SorKerdesKiiras(int segitsegKod = 0) //1: közönség
+        public void SorKerdesKiiras(int segitsegKod = 0) //1: közönség 2: felező
         {
             Console.WriteLine("TÖRÖLNI!!!!!! - "+helyesValasz); //majd a kész játéknál
             Console.WriteLine("Kategória: " + kategoria);
@@ -48,6 +48,28 @@ namespace legyenOnIsMilliomos
 				for (int i = 0; i < valaszok.Length; i++)
 				{
 					Console.WriteLine("\t" + betuk[i] + ": " + valaszok[i]+" szavazás eredmény: " + szazalekok[i]+"%");
+				}
+			}
+            else if (segitsegKod==2)
+            {
+                int helyesIndex = Array.IndexOf(betuk, Convert.ToChar(helyesValasz));
+
+                bool marade = true;
+                int masikRandomSzam =0;
+                while (marade)
+                {
+                    masikRandomSzam = rnd.Next(0, valaszok.Length);
+                    if (helyesIndex != masikRandomSzam)
+					{
+						marade = false;
+					}
+                }
+
+				for (int i = 0; i < valaszok.Length; i++)
+				{
+                    Console.ResetColor();
+                    if (!(helyesIndex == i || masikRandomSzam == i)) { Console.ForegroundColor = ConsoleColor.Black; }
+					Console.WriteLine("\t" + betuk[i] + ": " + valaszok[i]);
 				}
 			}
         }
