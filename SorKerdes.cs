@@ -17,7 +17,7 @@ namespace legyenOnIsMilliomos
 
         public void SorKerdesKiiras(int segitsegKod = 0) //1: közönség 2: felező 3: telefonos
         {
-            Console.WriteLine("TÖRÖLNI!!!!!! - "+helyesValasz); //majd a kész játéknál
+            //Console.WriteLine("TÖRÖLNI!!!!!! - "+helyesValasz); //majd a kész játéknál
             Console.WriteLine("Kategória: " + kategoria);
             Console.WriteLine(kerdesSzoveg);
 
