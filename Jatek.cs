@@ -11,6 +11,7 @@ namespace legyenOnIsMilliomos
     internal class Jatek
     {
         private int penzosszeg = 0;
+        private int segitsegCount = 0;
 
         
         static bool SorKerdesJatszas()
@@ -58,10 +59,31 @@ namespace legyenOnIsMilliomos
                     k.SorKerdesHuzas(lepes);
                     Console.WriteLine("Jelenlegi egyenleg: "+penzosszeg+" Ft");
                     Console.WriteLine("Ez a kérdés "+penznyeremeny+" Ft-ot ér");
-                    k.SorKerdesKiiras(1);
+
+                    if (segitsegCount < 3)
+                    {
+                        Console.WriteLine("Kérhet segítséget: 1-szavazás, 2-felezés, 3-telefonos segítség");
+                    }
+
+                    k.SorKerdesKiiras();
 
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    if (k.ValaszCheck(Console.ReadLine()))
+                    string valasz = Console.ReadLine();
+                    Console.ResetColor();
+
+                    if (int.TryParse(valasz,out int szam)&&segitsegCount<3) 
+                    {
+                        Console.Clear();
+                        k.SorKerdesKiiras(szam);
+
+						Console.ForegroundColor = ConsoleColor.Cyan;
+						valasz = Console.ReadLine();
+						Console.ResetColor();
+
+                        segitsegCount++;
+					}
+
+                    if (k.ValaszCheck(valasz))
                     {
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -69,12 +91,13 @@ namespace legyenOnIsMilliomos
                         Console.ResetColor();
                         Thread.Sleep(1000);
                         Console.Clear();
-                        
+
                         if (penzosszeg == 0)
                         {
                             penzosszeg = penznyeremeny;
                         }
-                        else {
+                        else
+                        {
                             penzosszeg += penznyeremeny;
                             penznyeremeny = penzosszeg;
                         }
