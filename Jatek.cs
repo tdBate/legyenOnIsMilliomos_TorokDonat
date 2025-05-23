@@ -28,6 +28,7 @@ namespace legyenOnIsMilliomos
         public void JatekIndit()
         {
             int penznyeremeny = 10000;
+            int garantaltNyeremeny = 0;
 
             Console.WriteLine("Üdvözlöm a Legyen Ön is milliomos játékban!");
             Thread.Sleep(1000);
@@ -51,6 +52,8 @@ namespace legyenOnIsMilliomos
                 bool marade = true;
                 while (marade)
                 {
+                    if (lepes==4||lepes==9) garantaltNyeremeny = penzosszeg;
+
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine((lepes+1)+". kör következik");
                     Console.ResetColor ();
@@ -83,7 +86,15 @@ namespace legyenOnIsMilliomos
                         if (segitsegVoltMar[szam - 1] == false)
                         {
                             Console.Clear();
-                            k.SorKerdesKiiras(szam);
+							Console.ForegroundColor = ConsoleColor.Magenta;
+							Console.WriteLine((lepes + 1) + ". kör következik");
+							Console.ResetColor();
+
+
+							Console.WriteLine("Jelenlegi egyenleg: " + penzosszeg + " Ft");
+							Console.WriteLine("Ez a kérdés " + penznyeremeny + " Ft-ot ér");
+
+							k.SorKerdesKiiras(szam);
 
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             valasz = Console.ReadLine();
@@ -116,6 +127,10 @@ namespace legyenOnIsMilliomos
                     else
                     {
                         Console.WriteLine("Helytelen válasz!");
+                        if (garantaltNyeremeny != 0)
+                        {
+							Console.WriteLine("Nyert " + garantaltNyeremeny + " Forintot!!");
+						}
                         marade = false;
                     }
 
@@ -123,7 +138,8 @@ namespace legyenOnIsMilliomos
 
                     if (k.VegIndex-k.KezdoIndex == lepes)
                     {
-                        Console.WriteLine("Nyert "+penzosszeg+" Forintot!!");
+                        garantaltNyeremeny = penzosszeg;
+                        Console.WriteLine("Nyert "+garantaltNyeremeny+" Forintot!!");
                         marade = false;
                     }
 
