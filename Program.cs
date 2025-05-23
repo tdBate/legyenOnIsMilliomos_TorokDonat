@@ -11,7 +11,6 @@ namespace legyenOnIsMilliomos
     {
         static void Main(string[] args)
         {
-		
             Jatek j = new Jatek();
             j.JatekIndit();
             Console.ReadKey();
