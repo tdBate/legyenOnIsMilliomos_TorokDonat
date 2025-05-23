@@ -11,7 +11,7 @@ namespace legyenOnIsMilliomos
     internal class Jatek
     {
         private int penzosszeg = 0;
-        private int segitsegCount = 0;
+        private bool[] segitsegVoltMar = {false,false,false };
 
         
         static bool SorKerdesJatszas()
@@ -60,27 +60,37 @@ namespace legyenOnIsMilliomos
                     Console.WriteLine("Jelenlegi egyenleg: "+penzosszeg+" Ft");
                     Console.WriteLine("Ez a kérdés "+penznyeremeny+" Ft-ot ér");
 
-                    if (segitsegCount < 3)
+                    string[] segitsegek = { "1-szavazás", "2-felezés", "3-telefonos segítség" };
+                    
+                    for (int i = 0; i < segitsegVoltMar.Length; i++)
                     {
-                        Console.WriteLine("Kérhet segítséget: 1-szavazás, 2-felezés, 3-telefonos segítség");
+                        if (segitsegVoltMar[i]==false)
+						{
+							Console.Write(segitsegek[i] + " ");
+						}
                     }
+					Console.WriteLine();
 
-                    k.SorKerdesKiiras();
+
+					k.SorKerdesKiiras();
 
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     string valasz = Console.ReadLine();
                     Console.ResetColor();
 
-                    if (int.TryParse(valasz,out int szam)&&segitsegCount<3) 
+                    if (int.TryParse(valasz,out int szam)) 
                     {
-                        Console.Clear();
-                        k.SorKerdesKiiras(szam);
+                        if (segitsegVoltMar[szam - 1] == false)
+                        {
+                            Console.Clear();
+                            k.SorKerdesKiiras(szam);
 
-						Console.ForegroundColor = ConsoleColor.Cyan;
-						valasz = Console.ReadLine();
-						Console.ResetColor();
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            valasz = Console.ReadLine();
+                            Console.ResetColor();
 
-                        segitsegCount++;
+                            segitsegVoltMar[szam - 1] = true;
+                        }
 					}
 
                     if (k.ValaszCheck(valasz))
